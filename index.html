@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <title>消费概况</title>
+    <meta name="author" content="av@alexv525.com"/>
+    <meta name="description" content="校园卡消费概况" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="apple-mobile-web-app-title" content="消费概况" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="theme-color" content="#303441" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/vendor/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="assets/vendor/swiper-4.2.2/css/swiper.min.css" />
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+</head>
+<body>
+    <div id="loading" class="loader">
+        <div class="loader-overlay">
+            <img src="assets/images/logo.png" alt="Loading" />
+        </div>
+        <div class="loader-errormsg">
+            <span>应用加载失败</span>
+            <br />
+            <span>原因：<b class="error-type"></b></span>
+            <br />
+            <span class="error-refresh">
+                <i class="iconfont icon-Refresh"></i> 重新加载
+            </span>
+        </div>
+        <div class="loader-cogs">
+            <div class="loader-cogs-top">
+                <div class="top-part"></div>
+                <div class="top-part"></div>
+                <div class="top-part"></div>
+                <div class="top-hole"></div>
+            </div>
+            <div class="loader-cogs-left">
+                <div class="left-part"></div>
+                <div class="left-part"></div>
+                <div class="left-part"></div>
+                <div class="left-hole"></div>
+            </div>
+            <div class="loader-cogs-bottom">
+                <div class="bottom-part"></div>
+                <div class="bottom-part"></div>
+                <div class="bottom-part"></div>
+                <div class="bottom-hole"><!-- lol --></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container op-0">
+            <div class="main-header">
+                <a href="./records.html" class="pull-left">
+                    <button type="button" name="user">
+                        <i class="iconfont icon-more"></i>
+                    </button>
+                </a>
+                <button type="button" name="question" class="pull-right">
+                    <i class="iconfont icon-question"></i>
+                </button>
+            </div>
+            <div class="cards swiper-container">
+                <div class="viewport swiper-wrapper" id="cards-container"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="count">
+                <div class="count-balance pull-left">
+                    <span class="count-name">余额</span>
+                    <span class="count-card-balance"></span>
+                </div>
+                <div class="count-receipts pull-right">
+                    <div class="count-receipts-in">
+                        <span class="count-name">本月收入</span>
+                        <span class="count-card-receipts-in pull-right"></span>
+                    </div>
+                    <div class="count-receipts-last">
+                        <span class="count-name">上次消费</span>
+                        <span class="count-card-receipts-last pull-right"></span>
+                    </div>
+                    <div class="count-receipts-out">
+                        <span class="count-name">本月支出</span>
+                        <span class="count-card-receipts-out pull-right"></span>
+                    </div>
+                </div>
+            </div>
+            <ul class="details"></ul>
+        </div>
+    </div>
+    <div class="switch">
+            <span class="switch-tip">
+                <i class="iconfont icon-question"></i>
+                确认切换至此卡？
+            </span>
+        <button class="switch-btn switch-confirm">是</button>
+        <button class="switch-btn switch-cancel" >否</button>
+    </div>
+    <div class="help-proof"></div>
+    <div class="help">
+        <div class="help-control flash">
+            <div class="help-control-btn fold"></div>
+        </div>
+        <div class="help-content">
+            <span class="help-question">Q：这是什么？</span>
+            <span class="help-answer">A：这里可以查询到你的一卡通消费记录，内容包括<strong>余额</strong>、<strong>收入</strong>、<strong>支出</strong>、<strong>流水</strong>、<strong>时间</strong>、<strong>地点</strong>、<strong>类型</strong>，可根据月份选择。</span>
+            <span class="help-question">Q：如何进入账单详情查询？</span>
+            <span class="help-answer">A：点击左上角 <i class="iconfont icon-more"></i> 按钮进入账单详情。</span>
+            <span class="help-question">Q：为什么查不到最新的余额变动和消费记录？</span>
+            <span class="help-answer">A：记录同步时间非实时，若当前查询不到最新的余额变动和消费记录，可稍后或次日再行查看。</span>
+        </div>
+        <div class="help-copyright">
+            <span>2016-2019 ©
+                    <a href="https://blog.alexv525.com">Alex Vincent</a>
+                </span>
+            <span>All Rights Reserved.</span>
+        </div>
+    </div>
+    <div class="scrollTop">
+        <i class="iconfont icon-top"></i>
+    </div>
+    <script src="assets/vendor/raven/3.24.2/raven.min.js"></script>
+    <script>Raven.config('https://1d194c732c8846eeb1084750ee4d470a@sentry.io/1194338').install();</script>
+    <script src="assets/js/uaJudge.min.js"></script>
+    <script src="assets/vendor/jquery-v1.11.3/jquery.min.js"></script>
+    <script src="assets/vendor/Fastclick/fastclick.js"></script>
+    <script src="assets/vendor/swiper-4.2.2/js/swiper.min.js"></script>
+    <script src="assets/js/scrollTop.min.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>

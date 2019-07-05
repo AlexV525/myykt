@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+body {
+    background: #ffffff url('../images/404_bg.png') repeat fixed left top;
+    font-family: "PingFang SC", "Microsoft Yahei UI", "Segoe UI", sans-serif, Arial;
+}
+
+.errorImage {
+    margin: 50px auto;
+}
+@media screen and (max-width: 414px) {
+    .errorImage {
+        margin: 0 auto;
+    }
+}
+.errorImage>img {
+    display: block;
+    margin: 0 auto;
+}
+.errorMessage {
+    display: block;
+    text-align: center;
+    width: auto;
+    margin: 5px auto;
+}
+.messageChinese {
+    color: #fff;
+    font-size: 24px;
+    text-shadow: black 1px 1px 1px;
+}
+.messageEnglish {
+    color: #aaa;
+    font-size: 16px;
+    text-shadow: black 1px 1px 1px;
+}
+.errorButton {
+    display: block;
+    margin: 30px auto;
+    width: 350px;
+}
+@media (max-width: 380px) {
+    .errorImage>img {
+        display: block;
+        margin: 0 auto;
+        width: 400px;
+    }
+    .errorButton {
+        width: 275px;
+    }
+}
+.errorButtonBack, .errorButtonMail {
+    width: 130px;
+    line-height: 2.5;
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+.errorButtonBack {
+    float: left;
+    background-color: #A3E0FF;
+    color: #222;
+}
+.errorButtonBack:hover {
+    background-color: #3996C5;
+    color: #222;
+}
+.errorButtonMail {
+    float: right;
+    background-color: #FF3B3B;
+    color: #ddd;
+}
+.errorButtonMail:hover {
+    background-color: #CC2121;
+    color: #ddd;
+}

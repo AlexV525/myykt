@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+body {
+	/*background-color: #525659;*/
+	background: #ffffff url('/assets/images/bg.png') repeat fixed left top;
+	font-family: "PingFang SC", "Microsoft Yahei UI", "Segoe UI", sans-serif, Arial;
+}

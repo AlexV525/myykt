@@ -1,0 +1,13 @@
+{
+    "status": "success",
+    "message": "",
+    "data": {
+        "info": {
+            "id": 1,
+            "balance": "345.67",
+            "receipts_in": "35.50",
+            "receipts_out": "384.50",
+            "receipts_last": "8.00"
+        }
+    }
+}

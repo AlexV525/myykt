@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <title>账单详情</title>
+    <meta name="author" content="av@alexv525.com"/>
+    <meta name="description" content="校园卡账单详情" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="apple-mobile-web-app-title" content="账单详情" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="theme-color" content="#303441" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/vendor/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="assets/vendor/mescroll-master/dist/mescroll.min.css" />
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+</head>
+<body>
+    <div id="loading" class="loader">
+        <div class="loader-overlay">
+            <img src="assets/images/logo.png" alt="Loading" />
+        </div>
+        <div class="loader-errormsg">
+            <span>应用加载失败</span>
+            <br />
+            <span>原因：<b class="error-type"></b></span>
+            <br />
+            <span class="error-refresh">
+                <i class="iconfont icon-Refresh"></i> 重新加载
+            </span>
+        </div>
+        <div class="loader-cogs">
+            <div class="loader-cogs-top">
+                <div class="top-part"></div>
+                <div class="top-part"></div>
+                <div class="top-part"></div>
+                <div class="top-hole"></div>
+            </div>
+            <div class="loader-cogs-left">
+                <div class="left-part"></div>
+                <div class="left-part"></div>
+                <div class="left-part"></div>
+                <div class="left-hole"></div>
+            </div>
+            <div class="loader-cogs-bottom">
+                <div class="bottom-part"></div>
+                <div class="bottom-part"></div>
+                <div class="bottom-part"></div>
+                <div class="bottom-hole"><!-- lol --></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper mescroll" id="wrapper">
+        <div class="container op-0" id="container">
+            <div class="main-header">
+                <a href="./index.html" class="pull-left">
+                    <button type="button" name="back">
+                        <i class="iconfont icon-back"></i>
+                    </button>
+                </a>
+                <button type="button" name="datepicker" class="pull-right">
+                    <input type="hidden" name="date" />
+                    <i class="iconfont icon-calendar"></i>
+                </button>
+                <button type="button" name="question" class="pull-right" style="margin:0 10px">
+                    <i class="iconfont icon-question"></i>
+                </button>
+            </div>
+            <div class="summary">
+                <div class="summary-info">
+                    <span class="summary-date"></span>
+
+                    <div class="type-select">
+                        <span class="type-select-type">全部</span>
+                        <div class="type-select-cover"></div>
+                        <div class="type-dropdown">
+                            <ul class="type-dropdown-menu">
+                                <li class="selected"><a data-type="all">全部</a></li>
+                                <li><a data-type="eating">餐费</a></li>
+                                <li><a data-type="electric">水电</a></li>
+                                <li><a data-type="in">收入</a></li>
+                            </ul>
+                        </div>
+                    </div><span class="summary-type"> 流水总额</span>
+                    <span class="summary-amount" id="amount"></span>
+                </div>
+                <div id="echarts"></div>
+            </div>
+            <ul id="records" class="records"></ul>
+        </div>
+    </div>
+    <div class="help-proof"></div>
+    <div class="help">
+        <div class="help-control flash">
+            <div class="help-control-btn fold"></div>
+        </div>
+        <div class="help-content">
+            <span class="help-question">Q：详情包含哪些内容</span>
+            <span class="help-answer">A：内容包括<strong>全部</strong>、<strong>餐费</strong>、<strong>水电</strong>、<strong>收入</strong>四项分类的单月每日流水金额。</span>
+            <span class="help-question">Q：如何使用账单详情查询？</span>
+            <span class="help-answer">查询默认显示当前月份的消费记录。点击日期下方下拉框可以切换查询分类。点击 <i class="iconfont icon-calendar"></i> 图标可以指定月份查询。下方将动态载入消费记录。</span>
+            <span class="help-question">Q：为什么查不到最新的余额变动和消费记录？</span>
+            <span class="help-answer">A：记录同步时间非实时，若当前查询不到最新的余额变动和消费记录，可稍后或次日再行查看。</span>
+        </div>
+        <div class="help-copyright">
+            <span>2016-2019 ©
+                    <a href="https://blog.alexv525.com">Alex Vincent</a>
+                </span>
+            <span>All Rights Reserved.</span>
+        </div>
+    </div>
+    <div class="scrollTop">
+        <i class="iconfont icon-top"></i>
+    </div>
+    <script src="assets/vendor/raven/3.24.2/raven.min.js"></script>
+    <script>Raven.config('https://1d194c732c8846eeb1084750ee4d470a@sentry.io/1194338').install();</script>
+    <script src="assets/js/uaJudge.min.js"></script>
+    <script src="assets/vendor/jquery-v1.11.3/jquery.min.js"></script>
+    <script src="assets/vendor/Fastclick/fastclick.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/countUp.js/countUp.min.js"></script>
+    <script src="assets/vendor/mescroll-master/dist/mescroll.min.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="assets/js/scrollTop.min.js"></script>
+    <script src="assets/js/records.js"></script>
+</body>
+</html>
